@@ -209,7 +209,8 @@
 .pphg-hero {
   position: relative;
   min-height: 280px;
-  margin: calc(-1 * var(--safe-t)) calc(-1 * var(--container-padding)) 0;
+  margin: calc(-1 * (var(--safe-t) + var(--app-header-height)))
+    calc(-1 * var(--container-padding)) 0;
   width: calc(100% + 2 * var(--container-padding));
   background-size: cover;
   background-position: center;

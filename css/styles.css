@@ -32,6 +32,8 @@
   /* Navigation */
   --nav-height: 56px;
   --nav-inactive: #8E8E93;
+  /* Must match .header-home / .header-sub: vertical padding + row (e.g. 36px control) + 1px border where present */
+  --app-header-height: 57px;
 }
 
 /* ──────────────────────────────────────────────
@@ -168,7 +170,7 @@
   bottom: 0;
   overflow-y: auto;
   overflow-x: hidden;
-  padding-top: var(--safe-t);
+  padding-top: calc(var(--safe-t) + var(--app-header-height));
   padding-bottom: calc(var(--nav-height) + var(--safe-b));
   -webkit-overflow-scrolling: touch;
   overscroll-behavior-y: contain;
