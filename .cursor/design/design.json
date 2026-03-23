@@ -1,0 +1,143 @@
+{
+    "applicationName": "Luxury Hotel Booking App",
+    "theme": {
+        "colorPalette": {
+            "primary": "#AC8B45",
+            "primaryVariant": "#8E7238",
+            "background": "#000000",
+            "surface": "#1A1A1A",
+            "textPrimary": "#FFFFFF",
+            "textSecondary": "#A0A0A0",
+            "border": "#333333",
+            "error": "#CF6679"
+        },
+        "typography": {
+            "fontFamily": "Serif",
+            "headings": {
+                "fontWeight": "600",
+                "letterSpacing": "0.05em",
+                "textTransform": "uppercase"
+            },
+            "body": {
+                "fontFamily": "Sans-Serif",
+                "fontSize": "14px"
+            }
+        },
+        "borderRadius": "4px"
+    },
+    "layout": {
+        "navigation": "Bottom Navigation Bar",
+        "header": "Logo and Contextual Back Button"
+    },
+    "reusableComponents": {
+        "BottomNav": {
+            "items": [
+                "Book",
+                "Explore",
+                "Loyalty",
+                "Offers",
+                "Account"
+            ],
+            "styling": "Dark background, active state highlighted in Primary Gold"
+        },
+        "PrimaryButton": {
+            "styling": "Background: Primary Gold, Text: White, Uppercase, Bold"
+        },
+        "SecondaryButton": {
+            "styling": "Border: 1px Solid White, Background: Transparent, Text: White"
+        },
+        "InputGroup": {
+            "styling": "Bottom border only, Label above input in TextSecondary"
+        },
+        "OfferCard": {
+            "elements": [
+                "Image",
+                "DiscountBadge",
+                "Title",
+                "Location",
+                "ValidityDate"
+            ],
+            "styling": "Shadowed container, rounded corners, image aspect-ratio 16:9"
+        }
+    },
+    "screens": [
+        {
+            "id": "home_search",
+            "name": "Home / Initial Search",
+            "elements": [
+                "Hero Image Background",
+                "Brand Logo",
+                "Global Search Input: 'Where would you like to go?'"
+            ]
+        },
+        {
+            "id": "destination_selection",
+            "name": "Search Results / Region Picker",
+            "elements": [
+                "List of Regions (Accordion/Navigation)",
+                "Search Results List: Title, Country Label, Divider"
+            ]
+        },
+        {
+            "id": "date_selection",
+            "name": "Calendar Picker",
+            "elements": [
+                "Month/Year Header",
+                "Day Grid",
+                "Range Selection Styling: Gold background for start/end, muted gold for range",
+                "Floating Footer: 'Confirm for [X] Nights' Button"
+            ]
+        },
+        {
+            "id": "occupant_selection",
+            "name": "Booking Details / Room Config",
+            "elements": [
+                "Location Summary Header",
+                "Check-in/Check-out Summary",
+                "Stepper Controls: Adults, Children (Counter with +/- buttons)",
+                "Add Room Button",
+                "Promo Code Toggle"
+            ]
+        },
+        {
+            "id": "hotel_details",
+            "name": "Hotel Overview",
+            "elements": [
+                "Image Carousel with indicator (e.g., 1/5)",
+                "Hotel Name Heading",
+                "Quick Action Icons: Call, Directions, Email",
+                "Expandable Description",
+                "Horizontal Scroll: Room Types (Image + Title)"
+            ]
+        },
+        {
+            "id": "room_selection",
+            "name": "Room Type List",
+            "elements": [
+                "Room Card: Image, Title, Size/Features",
+                "Price per night",
+                "Select Button"
+            ]
+        },
+        {
+            "id": "checkout_payment",
+            "name": "Review and Pay",
+            "elements": [
+                "Booking Summary Card",
+                "Guest Information Form",
+                "Payment Method Picker (Credit Card, Digital Wallet)",
+                "T&C Checkbox",
+                "Final 'Book Now' Button"
+            ]
+        },
+        {
+            "id": "account_dashboard",
+            "name": "User Account / Settings",
+            "elements": [
+                "Membership Promo Banner",
+                "Action Grid: Bookings, Contact Us, FAQ, Settings, About",
+                "Version Number Footer"
+            ]
+        }
+    ]
+}

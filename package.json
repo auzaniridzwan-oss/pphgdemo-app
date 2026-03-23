@@ -1,0 +1,10 @@
+{
+  "name": "pan-pacific-hotel-demo",
+  "version": "2.0.0",
+  "description": "Pan Pacific Hotel Group Singapore stays demo — Mobile-First iPhone Frame, Braze WebSDK",
+  "private": true,
+  "scripts": {
+    "dev": "npx serve .",
+    "build": "echo 'Static site — no build step required'"
+  }
+}

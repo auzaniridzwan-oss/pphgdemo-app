@@ -1,0 +1,139 @@
+/**
+ * Pan Pacific Hotel Group — theme tokens from .cursor/design/design.json
+ * Dark luxury surface + gold primary; applied after base styles.css
+ */
+
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Source+Sans+3:wght@400;500;600&display=swap');
+
+:root {
+  --pphg-primary: #ac8b45;
+  --pphg-primary-variant: #8e7238;
+  --pphg-bg: #000000;
+  --pphg-surface: #1a1a1a;
+  --pphg-surface-elevated: #242424;
+  --pphg-text-primary: #ffffff;
+  --pphg-text-secondary: #a0a0a0;
+  --pphg-border: #333333;
+  --pphg-error: #cf6679;
+  --pphg-radius: 4px;
+
+  /* Map legacy app variables for compatibility with shared layout rules */
+  --color-primary: var(--pphg-primary);
+  --color-secondary: var(--pphg-surface);
+  --color-text-main: var(--pphg-text-primary);
+  --color-text-muted: var(--pphg-text-secondary);
+  --color-accent-discount: var(--pphg-primary);
+  --color-border: var(--pphg-border);
+  --color-white: var(--pphg-text-primary);
+  --nav-inactive: var(--pphg-text-secondary);
+}
+
+body {
+  font-family: 'Source Sans 3', system-ui, sans-serif;
+  background: #0d0d0d !important;
+  color: var(--pphg-text-primary);
+}
+
+#phone-frame {
+  background: var(--pphg-bg);
+  border-color: #1a1a1a;
+  box-shadow: 0 24px 80px rgba(0, 0, 0, 0.65);
+}
+
+#app-content {
+  background: var(--pphg-bg);
+}
+
+/* Headers — glass on dark */
+.header-home,
+.header-sub {
+  background: rgba(26, 26, 26, 0.92) !important;
+  border-bottom-color: var(--pphg-border) !important;
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+}
+
+.header-home--hero {
+  background: linear-gradient(
+    180deg,
+    rgba(0, 0, 0, 0.75) 0%,
+    rgba(0, 0, 0, 0.35) 100%
+  ) !important;
+  border-bottom: none !important;
+}
+
+.header-sub .header-title {
+  color: var(--pphg-text-primary) !important;
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  font-size: 13px;
+}
+
+.header-btn {
+  color: var(--pphg-text-primary) !important;
+}
+
+/* Bottom nav — dark bar, gold active */
+.bottom-nav {
+  background: rgba(26, 26, 26, 0.98) !important;
+  border-top-color: var(--pphg-border) !important;
+}
+
+.nav-item {
+  color: var(--pphg-text-secondary) !important;
+}
+
+.nav-item.active {
+  color: var(--pphg-primary) !important;
+}
+
+.nav-label {
+  font-size: 9px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  font-weight: 600;
+}
+
+/* Toolbar outside frame */
+#app-toolbar {
+  background: #111 !important;
+  border-bottom: 1px solid var(--pphg-border);
+}
+
+/* Debug overlay legibility on dark chrome */
+#debug-overlay {
+  background: rgba(10, 10, 10, 0.97) !important;
+  color: #e0e0e0;
+}
+
+/* Braze toast on dark app */
+.braze-toast-row {
+  background: rgba(36, 36, 36, 0.96) !important;
+  border-color: var(--pphg-border) !important;
+}
+
+.braze-toast-title {
+  color: var(--pphg-text-primary) !important;
+}
+
+.braze-toast-desc {
+  color: var(--pphg-text-secondary) !important;
+}
+
+/* Full-width phone on small devices */
+@media (max-width: 430px) {
+  #phone-frame {
+    width: 100%;
+    max-width: 100vw;
+    height: 100dvh;
+    margin: 48px 0 0;
+    border-radius: 0;
+    border-width: 0;
+  }
+
+  body {
+    align-items: flex-start !important;
+  }
+}

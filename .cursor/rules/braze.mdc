@@ -1,0 +1,51 @@
+---
+alwaysApply: true
+description: Standards for Braze Web SDK integration, event naming, and state-driven callbacks
+globs: ["index.html", "**/braze.js", "**/services/braze-manager.js", "**/main.js"]
+---
+
+# Braze SDK Integration Standards
+
+## 1. Initialization & Safety
+- **Script Loading:** Load the Braze SDK via the `main.js` using the standard initialization snippet.
+- **Global Check:** Every Braze call must be wrapped in a safety check: `if (window.braze) { ... }`.
+- **API Key Management:** Store the Braze API Key and Endpoint in a `config.js` or fetch via environment variables.
+
+## 2. Event & Attribute Naming (Standardized)
+- **Custom Events:** Use `Title Case - Action` (e.g., `Navigation - Tab Switched`, `Promotion - Viewed`).
+- **User Attributes:** Use `snake_case` (e.g., `last_login_date`, `user_segment`).
+- **Standard Properties:** Always include `app_version` and `platform: "web_mobile_frame"` in the initialization metadata.
+
+## 3. The Callback & State Pattern
+- **Design Pattern:** Use a **Subscription/Observer Pattern**. Components should "subscribe" to Braze events rather than calling Braze directly.
+- **In-App Message (IAM) Handling:** Use the `braze.subscribeToInAppMessage` callback to detect when a message is triggered. 
+- **Containment:** If an IAM is triggered, force its display within the `#phone-frame` using:
+  ```javascript
+  braze.subscribeToInAppMessage((iam) => {
+    // Custom logic to inject IAM into the phone frame DOM
+    AppLogger.info('SDK', 'In-App Message Received', iam);
+    return false; // Set to false to handle display manually if needed
+  });
+`
+  ## 4. Banner (Content Cards) Subscription
+- **Requirement:** Do not poll for banners. Use the push-based subscription model.
+- **Implementation:**
+  ```javascript
+  braze.subscribeToContentCardsUpdates((cards) => {
+    const banners = cards.filter(card => card.extras['type'] === 'banner');
+    // Map Braze card objects to Flowbite Carousel or Promo List components
+    renderBanners(banners);
+    AppLogger.info('SDK', 'Banners Updated', { count: banners.length });
+  });
+
+## 5. Debug Overlay
+- **Requirement** Create an overlay outside the iphone frame that can popup based on a link in the navigation header. The overlay shows Braze debug information including current user profile (External ID, Braze ID, contact information), and a list of the latest 20 events.
+
+## 6. Test User
+- **Requirement** Use a defined test user profile (with name, email, external_id) to use for login in the application. call braze.changeUser with the test user profile.
+
+## 7. Demo Data
+- **Requirement** Create data objects to represent the initial demo state and demo content in the application. The initial app load will utilize the demo objects. All content will be represented as demo objects and dynamically built on app load. No static content defined in markup (except for logos and fixed text).
+
+## 7. Reset
+- **Requirement** Create a Reset link in the header navigation that will reset the application to the initial demo state. This includes resetting all local storage data, session data, and page navigations.

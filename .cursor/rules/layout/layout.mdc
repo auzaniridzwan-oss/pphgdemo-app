@@ -1,0 +1,58 @@
+---
+alwaysApply: intelligently
+description: Constraints for the iPhone-style mobile frame and app layout
+globs: ["index.html", "**/*.css", "**/ui/*.js"]
+---
+
+# Mobile-First App Design
+
+## Core Layout
+- All application content must be wrapped in a `#phone-frame` container.
+- **Dimensions:** Fixed aspect ratio of 19.5:9 (e.g., 390px x 844px for iPhone 14/15 Pro).
+- **Safe Areas:** Implement variables for the "Notch" (top: 47px) and "Home Indicator" (bottom: 34px).
+
+## iPhone Frame CSS Blueprint
+Apply the following structure to the root layout:
+
+```css
+:root {
+  --phone-width: 390px;
+  --phone-height: 844px;
+  --safe-top: 47px;
+  --safe-bottom: 34px;
+  --iphone-radius: 40px;
+}
+
+#phone-frame {
+  width: var(--phone-width);
+  height: var(--phone-height);
+  border: 12px solid #222;
+  border-radius: var(--iphone-radius);
+  position: relative;
+  overflow: hidden;
+  background: #fff;
+  box-shadow: 0 20px 50px rgba(0,0,0,0.2);
+  margin: 20px auto;
+}
+
+#app-content {
+  height: 100%;
+  overflow-y: auto;
+  padding-top: var(--safe-top);
+  padding-bottom: var(--safe-bottom);
+  -webkit-overflow-scrolling: touch;
+}
+
+/* The "Notch" / Dynamic Island */
+#phone-frame::before {
+  content: '';
+  position: absolute;
+  top: 15px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 120px;
+  height: 30px;
+  background: #222;
+  border-radius: 20px;
+  z-index: 100;
+}

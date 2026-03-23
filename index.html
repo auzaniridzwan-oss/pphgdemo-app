@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <title>Pan Pacific — Singapore Stays</title>
+
+  <!-- Tailwind CSS via CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            primary: '#AC8B45',
+            secondary: '#1A1A1A',
+            'text-main': '#FFFFFF',
+            'text-muted': '#A0A0A0',
+            'accent-discount': '#AC8B45',
+            'border-app': '#333333',
+          },
+          spacing: {
+            'base': '8px',
+            'container': '16px',
+            'card-gap': '12px',
+            'safe-t': '47px',
+            'safe-b': '34px',
+          },
+          borderRadius: {
+            'sm-app': '4px',
+            'md-app': '8px',
+            'lg-app': '12px',
+            'round': '50%',
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- FontAwesome Kit -->
+  <script src="https://kit.fontawesome.com/a21f98a3f6.js" crossorigin="anonymous" defer></script>
+
+  <!-- App Styles: base frame + PPHG theme & components -->
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="css/pphg-theme.css">
+  <link rel="stylesheet" href="css/pphg-components.css">
+</head>
+
+<body class="bg-gray-100 flex items-center justify-center min-h-screen antialiased text-gray-900 select-none">
+
+  <!-- Debug / Reset Bar (outside phone frame) -->
+  <div id="app-toolbar"
+    class="fixed top-0 left-0 right-0 z-[200] flex items-center justify-center gap-6 py-2 bg-gray-800 text-white text-xs">
+    <span class="font-semibold tracking-wide">Pan Pacific Hotel Group — Demo</span>
+    <button id="btn-debug" class="hover:text-yellow-300 transition-colors cursor-pointer"
+      aria-label="Open Debug Overlay">
+      <i class="fa-solid fa-bug" aria-hidden="true"></i> Debug
+    </button>
+    <button id="btn-reset" class="hover:text-red-300 transition-colors cursor-pointer" aria-label="Reset App">
+      <i class="fa-solid fa-rotate-right" aria-hidden="true"></i> Reset
+    </button>
+  </div>
+
+  <!-- iPhone Frame -->
+  <div id="phone-frame">
+    <!-- Header (injected by JS) -->
+    <div id="app-header"></div>
+
+    <!-- Main scrollable content area -->
+    <div id="app-content"></div>
+
+    <!-- Bottom Navigation (injected by JS) -->
+    <div id="app-nav"></div>
+  </div>
+
+  <!-- Debug Overlay (outside phone frame) -->
+  <div id="debug-overlay" class="hidden"></div>
+
+  <!-- App Scripts (ES Modules) -->
+  <script type="module" src="js/main.js"></script>
+</body>
+
+</html>

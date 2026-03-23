@@ -1,0 +1,59 @@
+---
+alwaysApply: true
+description: Standards for the fixed bottom navigation bar within the mobile frame
+globs: ["index.html", "**/navigation.js", "**/navigation.css", "**/components/nav/*"]
+---
+
+# Bottom Navigation Bar (App Style)
+
+## 1. Layout & Positioning
+- **Position:** `fixed` or `absolute` at the `bottom: 0` of the `#phone-frame`.
+- **Constraint:** Must ALWAYS remain visible above scrolling content (`z-index: 100`).
+- **Safe Area:** Incorporate `padding-bottom: var(--safe-bottom)` to prevent the Home Indicator from overlapping icons.
+- **Dimensions:** Height of `56px` + `var(--safe-bottom)`.
+
+## 2. Component Specifications
+- **Structure:** Use a `<nav>` tag containing an unordered list (`<ul>`) with exactly 4-5 items.
+- **Items:** - Each item must be a `flex` column (Icon on top, Label on bottom).
+    - Label font size: `10px` or `12px`.
+    - Active State: Use an `.active` class to change icon/label color (e.g., brand primary).
+- **Interactions:**
+    - Use `justify-content: space-around` for equal spacing.
+    - Provide haptic-like feedback (subtle scale transform on tap).
+
+## 3. CSS Blueprint
+```css
+.bottom-nav {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: calc(56px + var(--safe-bottom));
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px); /* iOS style blur */
+  border-top: 1px solid #eee;
+  display: flex;
+  justify-content: space-around;
+  align-items: flex-start; /* Align to top of nav to leave safe-bottom empty */
+  padding-top: 8px;
+  padding-bottom: var(--safe-bottom);
+  z-index: 100;
+}
+
+.nav-item {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-decoration: none;
+  color: #8E8E93; /* iOS Gray */
+}
+
+.nav-item.active {
+  color: #007AFF; /* iOS Blue / Brand Primary */
+}
+
+.nav-item i {
+  font-size: 24px;
+  margin-bottom: 4px;
+}

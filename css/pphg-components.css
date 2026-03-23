@@ -1,0 +1,409 @@
+/**
+ * Pan Pacific Hotel Group — reusable UI patterns from design.json
+ */
+
+.pphg-heading-serif {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--pphg-text-primary);
+}
+
+.pphg-label {
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--pphg-text-secondary);
+  margin-bottom: 6px;
+  display: block;
+}
+
+/* Primary / secondary buttons */
+.pphg-btn-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 48px;
+  width: 100%;
+  padding: 0 20px;
+  background: var(--pphg-primary);
+  color: #fff;
+  font-weight: 700;
+  font-size: 12px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  border: none;
+  border-radius: var(--pphg-radius);
+  cursor: pointer;
+  transition: transform 0.15s ease, background 0.15s ease;
+}
+
+.pphg-btn-primary:active {
+  transform: scale(0.98);
+  background: var(--pphg-primary-variant);
+}
+
+.pphg-btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 48px;
+  width: 100%;
+  padding: 0 20px;
+  background: transparent;
+  color: var(--pphg-text-primary);
+  font-weight: 600;
+  font-size: 12px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  border: 1px solid rgba(255, 255, 255, 0.85);
+  border-radius: var(--pphg-radius);
+  cursor: pointer;
+  transition: opacity 0.15s ease, transform 0.15s ease;
+}
+
+.pphg-btn-secondary:active {
+  opacity: 0.85;
+  transform: scale(0.98);
+}
+
+/* Input group — label above, bottom border */
+.pphg-input-group {
+  margin-bottom: 18px;
+}
+
+.pphg-input-group input,
+.pphg-input-group select {
+  width: 100%;
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid var(--pphg-border);
+  color: var(--pphg-text-primary);
+  font-size: 15px;
+  padding: 10px 0;
+  outline: none;
+  border-radius: 0;
+}
+
+.pphg-input-group input:focus,
+.pphg-input-group select:focus {
+  border-bottom-color: var(--pphg-primary);
+}
+
+/* Offer card — 16:9 image, badge, meta */
+.pphg-offer-card {
+  background: var(--pphg-surface);
+  border-radius: 8px;
+  overflow: hidden;
+  border: 1px solid var(--pphg-border);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.35);
+  margin-bottom: 16px;
+}
+
+.pphg-offer-card__media {
+  position: relative;
+  aspect-ratio: 16 / 9;
+  background: var(--pphg-surface-elevated);
+}
+
+.pphg-offer-card__media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.pphg-offer-card__badge {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  background: var(--pphg-primary);
+  color: #fff;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  padding: 6px 10px;
+  border-radius: 2px;
+}
+
+.pphg-offer-card__body {
+  padding: 14px 16px 16px;
+}
+
+.pphg-offer-card__title {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--pphg-text-primary);
+  margin-bottom: 6px;
+  letter-spacing: 0.02em;
+}
+
+.pphg-offer-card__loc {
+  font-size: 12px;
+  color: var(--pphg-text-secondary);
+  margin-bottom: 4px;
+}
+
+.pphg-offer-card__valid {
+  font-size: 11px;
+  color: var(--pphg-primary);
+  letter-spacing: 0.04em;
+}
+
+/* Hotel list card */
+.pphg-hotel-card {
+  display: flex;
+  gap: 12px;
+  padding: 12px;
+  background: var(--pphg-surface);
+  border: 1px solid var(--pphg-border);
+  border-radius: 8px;
+  margin-bottom: 12px;
+  cursor: pointer;
+  text-align: left;
+  width: 100%;
+  transition: transform 0.15s ease, border-color 0.15s ease;
+}
+
+.pphg-hotel-card:active {
+  transform: scale(0.99);
+  border-color: var(--pphg-primary);
+}
+
+.pphg-hotel-card__thumb {
+  width: 96px;
+  height: 96px;
+  border-radius: 6px;
+  object-fit: cover;
+  flex-shrink: 0;
+}
+
+.pphg-hotel-card__meta {
+  flex: 1;
+  min-width: 0;
+}
+
+.pphg-hotel-card__name {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: 17px;
+  font-weight: 600;
+  color: var(--pphg-text-primary);
+  margin-bottom: 4px;
+}
+
+.pphg-hotel-card__area {
+  font-size: 12px;
+  color: var(--pphg-text-secondary);
+  margin-bottom: 8px;
+}
+
+.pphg-hotel-card__from {
+  font-size: 13px;
+  color: var(--pphg-primary);
+  font-weight: 600;
+}
+
+/* Hero block (Book home) */
+.pphg-hero {
+  position: relative;
+  min-height: 280px;
+  margin: calc(-1 * var(--safe-t)) calc(-1 * var(--container-padding)) 0;
+  width: calc(100% + 2 * var(--container-padding));
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 24px var(--container-padding) 28px;
+}
+
+.pphg-hero::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    180deg,
+    rgba(0, 0, 0, 0.2) 0%,
+    rgba(0, 0, 0, 0.75) 100%
+  );
+  pointer-events: none;
+}
+
+.pphg-hero > * {
+  position: relative;
+  z-index: 1;
+}
+
+.pphg-hero__kicker {
+  font-size: 10px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--pphg-primary);
+  margin-bottom: 8px;
+}
+
+.pphg-hero__title {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: 28px;
+  font-weight: 600;
+  line-height: 1.15;
+  color: #fff;
+  margin-bottom: 16px;
+  letter-spacing: 0.03em;
+}
+
+/* Stepper */
+.pphg-stepper {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 12px 0;
+  border-bottom: 1px solid var(--pphg-border);
+}
+
+.pphg-stepper__label {
+  color: var(--pphg-text-primary);
+  font-size: 15px;
+}
+
+.pphg-stepper__controls {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.pphg-stepper__btn {
+  width: 40px;
+  height: 40px;
+  border-radius: var(--pphg-radius);
+  border: 1px solid var(--pphg-border);
+  background: var(--pphg-surface-elevated);
+  color: var(--pphg-text-primary);
+  font-size: 18px;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.pphg-stepper__btn:active {
+  transform: scale(0.95);
+}
+
+.pphg-stepper__value {
+  min-width: 24px;
+  text-align: center;
+  font-weight: 600;
+  font-size: 16px;
+}
+
+/* Room row */
+.pphg-room-card {
+  border: 1px solid var(--pphg-border);
+  border-radius: 8px;
+  overflow: hidden;
+  margin-bottom: 14px;
+  background: var(--pphg-surface);
+}
+
+.pphg-room-card img {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+}
+
+.pphg-room-card__body {
+  padding: 14px 16px 16px;
+}
+
+.pphg-room-card__title {
+  font-weight: 600;
+  font-size: 16px;
+  color: var(--pphg-text-primary);
+  margin-bottom: 6px;
+}
+
+.pphg-room-card__meta {
+  font-size: 12px;
+  color: var(--pphg-text-secondary);
+  margin-bottom: 10px;
+}
+
+.pphg-room-card__price {
+  font-size: 15px;
+  color: var(--pphg-primary);
+  font-weight: 700;
+  margin-bottom: 12px;
+}
+
+/* Quick action icons row */
+.pphg-quick-actions {
+  display: flex;
+  justify-content: space-around;
+  padding: 16px 0;
+  border-bottom: 1px solid var(--pphg-border);
+}
+
+.pphg-quick-actions button {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  background: none;
+  border: none;
+  color: var(--pphg-text-secondary);
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  cursor: pointer;
+  min-width: 56px;
+  min-height: 56px;
+}
+
+.pphg-quick-actions button i {
+  font-size: 20px;
+  color: var(--pphg-primary);
+}
+
+.pphg-quick-actions button:active {
+  opacity: 0.75;
+}
+
+/* Account grid */
+.pphg-account-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  padding: 8px 0 24px;
+}
+
+.pphg-account-tile {
+  background: var(--pphg-surface);
+  border: 1px solid var(--pphg-border);
+  border-radius: 8px;
+  padding: 16px 12px;
+  text-align: center;
+  cursor: pointer;
+  transition: border-color 0.15s ease;
+}
+
+.pphg-account-tile:active {
+  border-color: var(--pphg-primary);
+}
+
+.pphg-account-tile i {
+  font-size: 22px;
+  color: var(--pphg-primary);
+  margin-bottom: 8px;
+}
+
+.pphg-account-tile span {
+  display: block;
+  font-size: 11px;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--pphg-text-secondary);
+}
