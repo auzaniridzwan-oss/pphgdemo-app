@@ -3,13 +3,14 @@
  * @module BottomNav
  */
 import Router from '../router.js';
+import AuthService from '../auth-service.js';
 
 const NAV_ITEMS = [
-  { label: 'Book', icon: 'fa-solid fa-calendar-check', route: '#/' },
-  { label: 'Explore', icon: 'fa-solid fa-compass', route: '#/explore' },
-  { label: 'Loyalty', icon: 'fa-solid fa-award', route: '#/loyalty' },
-  { label: 'Offers', icon: 'fa-solid fa-tag', route: '#/offers' },
-  { label: 'Account', icon: 'fa-solid fa-circle-user', route: '#/account' },
+  { label: 'Book', icon: 'fa-solid fa-calendar-check', route: '#/', requiresLogin: false },
+  { label: 'Explore', icon: 'fa-solid fa-compass', route: '#/explore', requiresLogin: false },
+  { label: 'Loyalty', icon: 'fa-solid fa-award', route: '#/loyalty', requiresLogin: true },
+  { label: 'Offers', icon: 'fa-solid fa-tag', route: '#/offers', requiresLogin: false },
+  { label: 'Account', icon: 'fa-solid fa-circle-user', route: '#/account', requiresLogin: true },
 ];
 
 const BottomNav = {
@@ -38,6 +39,7 @@ const BottomNav = {
       btn.type = 'button';
       btn.className = 'nav-item';
       btn.dataset.route = item.route;
+      btn.dataset.requiresLogin = item.requiresLogin ? 'true' : 'false';
       btn.setAttribute('aria-label', item.label);
 
       const icon = document.createElement('i');
@@ -52,12 +54,15 @@ const BottomNav = {
       btn.appendChild(label);
 
       btn.addEventListener('click', () => {
+        if (item.requiresLogin && !AuthService.isLoggedIn()) return;
         Router.navigate(item.route.replace('#', ''));
       });
 
       li.appendChild(btn);
       ul.appendChild(li);
     });
+
+    this.refreshAuthState();
 
     nav.appendChild(ul);
     container.innerHTML = '';
@@ -98,7 +103,21 @@ const BottomNav = {
    */
   onRouteChange(route) {
     this._syncActive(route);
-  }
+  },
+
+  /**
+   * Enable/disable nav items that require login (Loyalty, Account).
+   */
+  refreshAuthState() {
+    if (!this._container) return;
+    const loggedIn = AuthService.isLoggedIn();
+    this._container.querySelectorAll('.nav-item[data-requires-login="true"]').forEach((btn) => {
+      const locked = !loggedIn;
+      btn.classList.toggle('nav-item--locked', locked);
+      btn.disabled = locked;
+      btn.setAttribute('aria-disabled', locked ? 'true' : 'false');
+    });
+  },
 };
 
 export default BottomNav;

@@ -46,6 +46,20 @@ const DebugOverlay = {
     const logs = AppLogger.getLogs().filter(entry => entry.category === 'SDK').slice(0, 20);
     const brazeStatus = StorageManager.get('braze_init_status', 'unknown');
 
+    const userSection = user
+      ? `
+      <div class="debug-section">
+        <div class="debug-row"><span class="debug-label">External ID</span><span class="debug-value">${user.external_id || 'N/A'}</span></div>
+        <div class="debug-row"><span class="debug-label">Name</span><span class="debug-value">${user.first_name || ''} ${user.last_name || ''}</span></div>
+        <div class="debug-row"><span class="debug-label">Email</span><span class="debug-value">${user.email || 'N/A'}</span></div>
+        <div class="debug-row"><span class="debug-label">Phone</span><span class="debug-value">${user.phone || 'N/A'}</span></div>
+        <div class="debug-row"><span class="debug-label">Country</span><span class="debug-value">${user.country || 'N/A'}</span></div>
+        <div class="debug-row"><span class="debug-label">pphg_loyalty_id</span><span class="debug-value">${user.pphg_loyalty_id ?? 'N/A'}</span></div>
+        <div class="debug-row"><span class="debug-label">pphg_loyalty_points</span><span class="debug-value">${user.pphg_loyalty_points ?? 'N/A'}</span></div>
+        <div class="debug-row"><span class="debug-label">pphg_loyalty_tier</span><span class="debug-value">${user.pphg_loyalty_tier ?? 'N/A'}</span></div>
+      </div>`
+      : `<div class="debug-section"><div style="color:#999;">Not logged in — use toolbar Log in.</div></div>`;
+
     this._container.innerHTML = `
       <button class="debug-close" aria-label="Close Debug">Close</button>
       <h2>SDK Debug Overlay</h2>
@@ -59,13 +73,7 @@ const DebugOverlay = {
       </div>
 
       <h3>User Profile</h3>
-      <div class="debug-section">
-        <div class="debug-row"><span class="debug-label">External ID</span><span class="debug-value">${user.external_id}</span></div>
-        <div class="debug-row"><span class="debug-label">Name</span><span class="debug-value">${user.first_name} ${user.last_name}</span></div>
-        <div class="debug-row"><span class="debug-label">Email</span><span class="debug-value">${user.email}</span></div>
-        <div class="debug-row"><span class="debug-label">Phone</span><span class="debug-value">${user.phone || 'N/A'}</span></div>
-        <div class="debug-row"><span class="debug-label">Country</span><span class="debug-value">${user.country || 'N/A'}</span></div>
-      </div>
+      ${userSection}
 
       <h3>Storage Keys</h3>
       <div class="debug-section">

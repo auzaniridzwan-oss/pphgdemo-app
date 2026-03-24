@@ -205,10 +205,21 @@
   font-weight: 600;
 }
 
+/* Book home — fill #app-content; hero grows between header and bottom padding */
+.pphg-book-home {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  min-height: 100%;
+  height: 100%;
+  padding: 0 var(--container-padding) 24px;
+}
+
 /* Hero block (Book home) */
 .pphg-hero {
   position: relative;
-  min-height: 280px;
+  flex: 1 1 auto;
+  min-height: 0;
   margin: calc(-1 * (var(--safe-t) + var(--app-header-height)))
     calc(-1 * var(--container-padding)) 0;
   width: calc(100% + 2 * var(--container-padding));
@@ -407,4 +418,15 @@
   letter-spacing: 0.05em;
   text-transform: uppercase;
   color: var(--pphg-text-secondary);
+}
+
+/* Bottom nav — require-login tabs when logged out */
+.nav-item.nav-item--locked {
+  opacity: 0.42;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+.nav-item.nav-item--locked:active {
+  transform: none;
 }

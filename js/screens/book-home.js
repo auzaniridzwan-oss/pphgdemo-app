@@ -15,7 +15,7 @@ export default function renderBookHome(container) {
   Header.renderHeroBar();
 
   const wrap = document.createElement('div');
-  wrap.style.cssText = 'padding: 0 var(--container-padding) 24px;';
+  wrap.className = 'pphg-book-home';
 
   const hero = document.createElement('div');
   hero.className = 'pphg-hero';
@@ -53,11 +53,6 @@ export default function renderBookHome(container) {
     }
   });
 
-  hero.appendChild(kicker);
-  hero.appendChild(title);
-  hero.appendChild(label);
-  hero.appendChild(input);
-
   const cta = document.createElement('button');
   cta.type = 'button';
   cta.className = 'pphg-btn-primary';
@@ -73,13 +68,18 @@ export default function renderBookHome(container) {
 
   const sub = document.createElement('p');
   sub.style.cssText =
-    'font-size:12px;color:var(--pphg-text-secondary);text-align:center;margin-top:16px;padding:0;line-height:1.5;';
+    'font-size:12px;color:var(--pphg-text-secondary);text-align:center;margin-top:14px;padding:0;line-height:1.5;';
   sub.textContent =
     'Demo: Marina Bay, Orchard, and Kampong Glam properties with March 2026 school-holiday and Easter lead-in offers.';
 
+  hero.appendChild(kicker);
+  hero.appendChild(title);
+  hero.appendChild(label);
+  hero.appendChild(input);
+  hero.appendChild(cta);
+  hero.appendChild(sub);
+
   wrap.appendChild(hero);
-  wrap.appendChild(cta);
-  wrap.appendChild(sub);
 
   container.innerHTML = '';
   container.appendChild(wrap);

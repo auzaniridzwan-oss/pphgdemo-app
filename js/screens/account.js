@@ -15,6 +15,10 @@ export default function renderAccount(container) {
   Header.renderSubPage('Account', { backRoute: '/' });
 
   const user = BrazeManager.getUserProfile();
+  if (!user) {
+    Router.navigate('/');
+    return;
+  }
 
   const wrap = document.createElement('div');
   wrap.style.cssText = 'padding:12px var(--container-padding) 28px;';

@@ -6,7 +6,7 @@
 import AppConfig from './config.js';
 import AppLogger from './app-logger.js';
 import StorageManager from './storage-manager.js';
-import { TEST_USER } from './demo-data.js';
+import AuthService from './auth-service.js';
 import BrazeToast from './components/braze-toast.js';
 
 const BrazeManager = {
@@ -98,32 +98,56 @@ const BrazeManager = {
   },
 
   /**
-   * Identify the test user — either from stored session or demo data.
+   * Identify the Braze user from stored session when logged in; otherwise stay anonymous.
    * @private
    */
   _identifyUser() {
     if (!window.braze) return;
+    if (!AuthService.isLoggedIn()) {
+      AppLogger.info('SDK', 'Anonymous session (not logged in)');
+      return;
+    }
+    this.identifyLoggedInUser();
+  },
 
-    const storedUser = StorageManager.get('user_session', null);
-    const user = storedUser || TEST_USER;
-
+  /**
+   * Apply `user_session` to the SDK (changeUser + metadata). Call after login or on boot when already logged in.
+   */
+  identifyLoggedInUser() {
+    if (!window.braze) return;
+    const user = StorageManager.get('user_session', null);
+    if (!user?.external_id) {
+      AppLogger.warn('SDK', 'identifyLoggedInUser: missing user_session');
+      return;
+    }
     try {
       window.braze.changeUser(user.external_id);
-
-      /* window.braze.getUser().setFirstName(user.first_name);
-      window.braze.getUser().setLastName(user.last_name);
-      window.braze.getUser().setEmail(user.email);
-      window.braze.getUser().setPhoneNumber(user.phone);
-      window.braze.getUser().setCountry(user.country); */
-
       window.braze.getUser().setCustomUserAttribute('app_version', AppConfig.app.version);
       window.braze.getUser().setCustomUserAttribute('platform', AppConfig.app.platform);
-
-      StorageManager.set('user_session', user);
+      window.braze.requestContentCardsRefresh();
       AppLogger.info('SDK', 'User identified', { external_id: user.external_id });
     } catch (e) {
       AppLogger.error('SDK', 'Failed to identify user', e.message);
     }
+  },
+
+  /**
+   * Fetch loyalty + name fields from Vercel proxy (Braze REST). Caller stores via AuthService.loginLive.
+   * @param {string} externalId
+   * @returns {Promise<Object>} Profile payload for loginLive.
+   */
+  async fetchLiveProfileFromServer(externalId) {
+    const res = await fetch('/api/braze-profile', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ external_id: externalId }),
+    });
+    const data = await res.json().catch(() => ({}));
+    if (!res.ok) {
+      const msg = data.error || res.statusText || 'Profile fetch failed';
+      throw new Error(msg);
+    }
+    return data;
   },
 
   /**
@@ -213,11 +237,12 @@ const BrazeManager = {
   },
 
   /**
-   * Get the current user data for the debug overlay.
-   * @returns {Object} User profile data.
+   * Get the current user data for the debug overlay / Account screen.
+   * @returns {Object|null} Session object or null when logged out.
    */
   getUserProfile() {
-    return StorageManager.get('user_session', TEST_USER);
+    if (!AuthService.isLoggedIn()) return null;
+    return StorageManager.get('user_session', null);
   },
 };
 

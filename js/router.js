@@ -5,6 +5,7 @@
  */
 import AppLogger from './app-logger.js';
 import BrazeManager from './braze-manager.js';
+import AuthService from './auth-service.js';
 
 const Router = {
   /** @type {Object.<string, Function>} Route name -> render function */
@@ -79,6 +80,12 @@ const Router = {
     const contentEl = document.getElementById('app-content');
 
     if (!contentEl) return;
+
+    if ((path === '/loyalty' || path === '/account') && !AuthService.isLoggedIn()) {
+      AppLogger.info('UI', 'Auth guard redirect to home', { path });
+      window.location.hash = '#/';
+      return;
+    }
 
     if (path !== this._currentRoute) {
       const prevRoute = this._currentRoute;

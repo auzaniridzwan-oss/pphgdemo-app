@@ -14,10 +14,17 @@ export const TEST_USER = {
   country: 'SG',
 };
 
+/** DISCOVERY loyalty demo values (same keys as Braze custom attributes). */
+export const DEMO_LOYALTY = {
+  pphg_loyalty_id: 'DISC-SG-77821',
+  pphg_loyalty_points: 12400,
+  pphg_loyalty_tier: 'Gold',
+};
+
 /** Hero for Book home — Marina Bay skyline */
 export const BOOK_HERO = {
   image:
-    'https://images.unsplash.com/photo-1525625293400-d1ab58a37616?w=900&h=1200&fit=crop',
+    'https://images.unsplash.com/photo-1605425183435-25b7e99104a4?w=900&h=1200&fit=crop',
   kicker: 'Singapore',
   title: 'Stay in the heart of the city',
 };
