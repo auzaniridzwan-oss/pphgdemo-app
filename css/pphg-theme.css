@@ -102,9 +102,10 @@ body {
   border-bottom: 1px solid var(--pphg-border);
 }
 
-/* Debug overlay legibility on dark chrome */
+/* Debug panel — same surface as chrome, not full-viewport scrim */
 #debug-overlay {
-  background: rgba(10, 10, 10, 0.97) !important;
+  background: rgba(17, 17, 17, 0.98) !important;
+  border-right-color: var(--pphg-border) !important;
   color: #e0e0e0;
 }
 

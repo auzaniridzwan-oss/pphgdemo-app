@@ -237,6 +237,20 @@ const BrazeManager = {
   },
 
   /**
+   * Returns the Braze Web SDK device id for this browser (anonymous or identified).
+   * May be undefined before `initialize` completes; null if the SDK is unavailable or the call fails.
+   * @returns {string|null|undefined}
+   */
+  getDeviceId() {
+    if (!window.braze) return null;
+    try {
+      return window.braze.getDeviceId();
+    } catch (e) {
+      return null;
+    }
+  },
+
+  /**
    * Get the current user data for the debug overlay / Account screen.
    * @returns {Object|null} Session object or null when logged out.
    */

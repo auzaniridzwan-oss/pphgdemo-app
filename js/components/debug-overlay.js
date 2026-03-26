@@ -43,6 +43,8 @@ const DebugOverlay = {
     if (!this._container) return;
 
     const user = BrazeManager.getUserProfile();
+    const deviceId = BrazeManager.getDeviceId();
+    const deviceIdDisplay = deviceId || 'N/A';
     const logs = AppLogger.getLogs().filter(entry => entry.category === 'SDK').slice(0, 20);
     const brazeStatus = StorageManager.get('braze_init_status', 'unknown');
 
@@ -70,6 +72,7 @@ const DebugOverlay = {
         <div class="debug-row"><span class="debug-label">Version</span><span class="debug-value">${AppConfig.app.version}</span></div>
         <div class="debug-row"><span class="debug-label">Platform</span><span class="debug-value">${AppConfig.app.platform}</span></div>
         <div class="debug-row"><span class="debug-label">Braze Status</span><span class="debug-value">${brazeStatus}</span></div>
+        <div class="debug-row"><span class="debug-label">Device ID</span><span class="debug-value">${deviceIdDisplay}</span></div>
       </div>
 
       <h3>User Profile</h3>
