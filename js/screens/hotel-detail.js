@@ -27,7 +27,7 @@ export default function renderHotelDetail(container, hotelId) {
 
   Header.renderSubPage(hotel.name, { backRoute: '/explore' });
 
-  BrazeManager.logEvent('Hotel - Detail Viewed', {
+  BrazeManager.logEvent('hotel_detail_viewed', {
     hotel_id: hotelId,
     hotel_name: hotel.name,
   });

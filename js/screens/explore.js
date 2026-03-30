@@ -15,6 +15,8 @@ import { createHotelCard } from '../components/hotel-card.js';
 export default function renderExplore(container) {
   Header.renderSubPage('Singapore', { backRoute: '/' });
 
+  BrazeManager.logEvent('hotels_explore_viewed', { hotel_count: HOTELS.length });
+
   const wrap = document.createElement('div');
   wrap.style.cssText = 'padding:12px var(--container-padding) 24px;';
 
@@ -54,7 +56,7 @@ export default function renderExplore(container) {
     filtered.forEach((hotel) => {
       listHost.appendChild(
         createHotelCard(hotel, () => {
-          BrazeManager.logEvent('Hotel - Viewed', {
+          BrazeManager.logEvent('hotel_explore_item_clicked', {
             hotel_id: hotel.id,
             hotel_name: hotel.name,
             from_price: hotel.fromPrice,

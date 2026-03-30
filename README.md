@@ -63,18 +63,22 @@ The original marketplace shell is kept locally as [`index.html.bak`](index.html.
 | `Navigation - Tab Switched` | Hash route change (tab summary) |
 | `Auth - Login Completed` | After successful Demo or Live login (`mode`: `demo` \| `live`) |
 | `Search - Submitted` | Book home search / browse CTA |
-| `Hotel - Viewed` | Hotel chosen from Explore list |
-| `Hotel - Detail Viewed` | Hotel overview screen |
+| `hotels_explore_viewed` | Explore (Singapore) hotel list screen load (`hotel_count`) |
+| `hotel_explore_item_clicked` | Hotel card tap on Explore (`hotel_id`, `hotel_name`, `from_price`) |
+| `hotel_detail_viewed` | Hotel overview screen (`hotel_id`, `hotel_name`) |
 | `Hotel - Quick Action` | Call / map / email taps |
 | `Booking - Dates Selected` | Continue to rooms from detail |
 | `Booking - Room Selected` | Room card confirm |
 | `Checkout - Started` | Checkout screen load |
 | `Booking - Completed` | Demo confirmation |
-| `Promotion - Viewed` | Offer card tap |
+| `promotions_screen_viewed` | Offers tab screen load (`offer_count`) |
+| `promotion_viewed` | Offer card tap (`offer_id`, `offer_title`) |
 | `Loyalty - Screen Viewed` | DISCOVERY tab |
 | `App_Error` | Logger ERROR |
 
 Events are sent with `app_version` and `platform: web_mobile_frame` where applicable.
+
+**Event naming:** Explore, hotel detail, and Offers use **snake_case** names (`hotels_explore_viewed`, `hotel_explore_item_clicked`, `hotel_detail_viewed`, `promotions_screen_viewed`, `promotion_viewed`) so payloads map cleanly to analytics pipelines. Other custom events in this app remain **Title Case** (e.g. `Navigation - Tab Switched`, `Auth - Login Completed`).
 
 ### User attributes
 

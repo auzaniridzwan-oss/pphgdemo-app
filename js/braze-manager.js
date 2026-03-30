@@ -201,7 +201,7 @@ const BrazeManager = {
 
   /**
    * Log a custom event to Braze with optional properties.
-   * @param {string} eventName - Title Case event name.
+   * @param {string} eventName - Event name (e.g. snake_case such as `hotel_detail_viewed`, or legacy Title Case).
    * @param {Object} [properties={}] - Key-value event properties.
    */
   logEvent(eventName, properties = {}) {

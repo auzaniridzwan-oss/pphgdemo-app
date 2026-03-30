@@ -12,6 +12,8 @@ import { OFFERS } from '../demo-data.js';
 export default function renderOffers(container) {
   Header.renderSubPage('Offers', { backRoute: '/' });
 
+  BrazeManager.logEvent('promotions_screen_viewed', { offer_count: OFFERS.length });
+
   const wrap = document.createElement('div');
   wrap.style.cssText = 'padding:12px var(--container-padding) 28px;';
 
@@ -40,7 +42,7 @@ export default function renderOffers(container) {
       </div>
     `;
     const open = () => {
-      BrazeManager.logEvent('Promotion - Viewed', {
+      BrazeManager.logEvent('promotion_viewed', {
         offer_id: offer.id,
         offer_title: offer.title,
       });
