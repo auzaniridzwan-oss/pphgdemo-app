@@ -60,7 +60,7 @@ const DebugOverlay = {
         <div class="debug-row"><span class="debug-label">pphg_loyalty_points</span><span class="debug-value">${user.pphg_loyalty_points ?? 'N/A'}</span></div>
         <div class="debug-row"><span class="debug-label">pphg_loyalty_tier</span><span class="debug-value">${user.pphg_loyalty_tier ?? 'N/A'}</span></div>
       </div>`
-      : `<div class="debug-section"><div style="color:#999;">Not logged in — use toolbar Log in.</div></div>`;
+      : `<div class="debug-section"><div class="debug-muted">Not logged in — use toolbar Log in.</div></div>`;
 
     this._container.innerHTML = `
       <button class="debug-close" aria-label="Close Debug">Close</button>
@@ -86,13 +86,13 @@ const DebugOverlay = {
       <h3>Recent SDK Events (${logs.length})</h3>
       <div class="debug-section">
         ${logs.length === 0
-          ? '<div style="color:#666;">No events logged yet.</div>'
+          ? '<div class="debug-muted">No events logged yet.</div>'
           : logs.map(entry => `
             <div class="debug-log-entry">
               <span class="log-level-${entry.level}">[${entry.level}]</span>
-              <span style="color:#90CAF9;">[${entry.category}]</span>
+              <span class="debug-log-category">[${entry.category}]</span>
               ${entry.message}
-              <span style="color:#666; font-size:10px;">${entry.timestamp.substring(11, 19)}</span>
+              <span class="debug-log-time">${entry.timestamp.substring(11, 19)}</span>
             </div>
           `).join('')
         }
@@ -112,7 +112,7 @@ const DebugOverlay = {
    */
   _renderStorageKeys() {
     const keys = Object.keys(localStorage).filter(k => k.startsWith('ar_app_'));
-    if (keys.length === 0) return '<div style="color:#666;">No stored keys.</div>';
+    if (keys.length === 0) return '<div class="debug-muted">No stored keys.</div>';
 
     return keys.map(key => {
       const shortKey = key.replace('ar_app_', '');

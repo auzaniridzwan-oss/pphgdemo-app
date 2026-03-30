@@ -16,6 +16,9 @@
   --pphg-border: #333333;
   --pphg-error: #cf6679;
   --pphg-radius: 4px;
+  /* Page canvas + debug panel (outside phone frame) */
+  --pphg-canvas: #f9f7f0;
+  --pphg-canvas-border: rgba(0, 0, 0, 0.1);
 
   /* Map legacy app variables for compatibility with shared layout rules */
   --color-primary: var(--pphg-primary);
@@ -30,7 +33,7 @@
 
 body {
   font-family: 'Source Sans 3', system-ui, sans-serif;
-  background: #0d0d0d !important;
+  background: var(--pphg-canvas) !important;
   color: var(--pphg-text-primary);
 }
 
@@ -102,11 +105,12 @@ body {
   border-bottom: 1px solid var(--pphg-border);
 }
 
-/* Debug panel — same surface as chrome, not full-viewport scrim */
+/* Debug panel — light canvas, matches page background */
 #debug-overlay {
-  background: rgba(17, 17, 17, 0.98) !important;
-  border-right-color: var(--pphg-border) !important;
-  color: #e0e0e0;
+  background: var(--pphg-canvas) !important;
+  border-right: 1px solid var(--pphg-canvas-border) !important;
+  color: #1a1a1a !important;
+  box-shadow: 4px 0 20px rgba(0, 0, 0, 0.08) !important;
 }
 
 /* Braze toast on dark app */
