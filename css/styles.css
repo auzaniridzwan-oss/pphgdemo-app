@@ -1053,6 +1053,8 @@
   background: var(--pphg-debug-panel-bg, #1a1a1a);
   border-right: 1px solid var(--pphg-border, #333333);
   box-shadow: 8px 0 28px rgba(0, 0, 0, 0.45);
+  user-select: text;
+  -webkit-user-select: text;
 }
 
 #debug-overlay .debug-close {
@@ -1068,6 +1070,8 @@
   font-size: 13px;
   font-weight: 600;
   z-index: 2;
+  user-select: none;
+  -webkit-user-select: none;
 }
 
 #debug-overlay .debug-close:hover {
