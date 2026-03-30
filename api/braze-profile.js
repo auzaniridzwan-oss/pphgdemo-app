@@ -2,6 +2,30 @@
  * Vercel serverless — exports a subset of Braze user profile by external_id (REST).
  * Env: BRAZE_REST_API_KEY (required), BRAZE_REST_URL (default https://rest.iad-03.braze.com).
  */
+
+const LOYALTY_ALIAS_LABEL = 'id_loyalty';
+
+/**
+ * Reads loyalty id from Braze user_aliases: alias_name where alias_label is id_loyalty.
+ * @param {unknown} userAliases - Braze export `user_aliases` (array or rare single object).
+ * @returns {string|null}
+ */
+function getLoyaltyIdFromAliases(userAliases) {
+  let list = [];
+  if (Array.isArray(userAliases)) {
+    list = userAliases;
+  } else if (userAliases && typeof userAliases === 'object' && 'alias_label' in userAliases) {
+    list = [userAliases];
+  }
+  const found = list.find(
+    (a) => a && String(a.alias_label) === LOYALTY_ALIAS_LABEL
+  );
+  if (found == null || found.alias_name == null || found.alias_name === '') {
+    return null;
+  }
+  return String(found.alias_name);
+}
+
 module.exports = async (req, res) => {
   res.setHeader('Content-Type', 'application/json');
 
@@ -48,7 +72,13 @@ module.exports = async (req, res) => {
       },
       body: JSON.stringify({
         external_ids: [external_id],
-        fields_to_export: ['custom_attributes', 'first_name', 'last_name', 'email'],
+        fields_to_export: [
+          'custom_attributes',
+          'first_name',
+          'last_name',
+          'email',
+          'user_aliases',
+        ],
       }),
     });
 
@@ -79,11 +109,13 @@ module.exports = async (req, res) => {
       ? user.custom_attributes
       : {};
 
+    const loyaltyFromAlias = getLoyaltyIdFromAliases(user.user_aliases);
+
     res.status(200).json({
       first_name: user.first_name || '',
       last_name: user.last_name || '',
       email: user.email || '',
-      pphg_loyalty_id: custom.pphg_loyalty_id ?? null,
+      pphg_loyalty_id: loyaltyFromAlias ?? custom.pphg_loyalty_id ?? null,
       pphg_loyalty_points: custom.pphg_loyalty_points ?? null,
       pphg_loyalty_tier: custom.pphg_loyalty_tier ?? null,
     });
