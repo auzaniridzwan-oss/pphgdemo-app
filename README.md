@@ -35,8 +35,8 @@ Design tokens and UX patterns follow [`.cursor/design/design.json`](.cursor/desi
 
 ## Architecture
 
-- **`StorageManager`** ([`js/storage-manager.js`](js/storage-manager.js)) — All persisted state (e.g. `user_session`, `booking_draft`, `braze_init_status`, `auth_mode`, `logged_in`) uses the `ar_app_` prefix.
-- **`AppLogger`** ([`js/app-logger.js`](js/app-logger.js)) — Centralized logging; ERROR events also send Braze `App_Error`.
+- **`StorageManager`** ([`js/storage-manager.js`](js/storage-manager.js)) — All persisted state (e.g. `user_session`, `booking_draft`, `braze_init_status`, `auth_mode`, `logged_in`) uses the `ar_app_` prefix. Exposes **`subscribe(listener)`** so UI (e.g. the debug overlay) can react after `set`, `remove`, or `clearSession`.
+- **`AppLogger`** ([`js/app-logger.js`](js/app-logger.js)) — Centralized logging; ERROR events also send Braze `App_Error`. Exposes **`subscribe(listener)`** so the debug panel can refresh when new log lines are written.
 - **`BrazeManager`** ([`js/braze-manager.js`](js/braze-manager.js)) — SDK load/init, `changeUser`, IAM + Content Card subscriptions, guarded events/attributes, `getDeviceId()` for the debug panel, `fetchLiveProfileFromServer()` for Live login.
 - **`AuthService`** ([`js/auth-service.js`](js/auth-service.js)) — Demo vs Live mode, login/logout, loyalty fields for Loyalty/Account screens; logout may call `braze.wipeData` when switching modes.
 - **`Router`** ([`js/router.js`](js/router.js)) — Hash routes for tabs plus dynamic hotel paths: `/hotel/:id`, `/hotel/:id/rooms`, `/hotel/:id/checkout`.
@@ -49,7 +49,7 @@ Design tokens and UX patterns follow [`.cursor/design/design.json`](.cursor/desi
 
 - **Demo** / **Live** — switches auth mode (confirm + logout if already signed in).
 - **Log in** / **Log out** — Demo login uses `TEST_USER`; Live login prompts for `external_id` and loads profile via `/api/braze-profile`.
-- **Debug** — Opens a **left-docked** SDK debugger (does not cover the phone): session metadata, **Braze device ID**, user profile snapshot, recent SDK-category logs, and `ar_app_*` keys. Panel uses a dark shell with light “card” sections; the page **canvas** around the phone is a warm off-white (`--pphg-canvas`).
+- **Debug** — Opens a **left-docked** SDK debugger (does not cover the phone): session metadata, **Braze device ID**, user profile snapshot, recent SDK-category logs, and `ar_app_*` keys. While open, the panel **updates live** when logs are written or app storage changes (subscriptions + `requestAnimationFrame` batching); **scroll position is preserved** across re-renders. Body text in the panel is **selectable** for copy/paste (close button stays non-selectable). Panel uses a dark shell with light “card” sections; the page **canvas** around the phone is a warm off-white (`--pphg-canvas`).
 - **Reset** — Clears `ar_app_*` keys and reloads.
 
 The original marketplace shell is kept locally as [`index.html.bak`](index.html.bak) (ignored by git via `*.bak`).

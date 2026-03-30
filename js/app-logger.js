@@ -8,6 +8,9 @@ const AppLogger = {
   MAX_LOGS: 100,
   DEBUG_MODE: window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1',
 
+  /** @type {Set<function(): void>} @private */
+  _logSubscribers: new Set(),
+
   /**
    * Core log method — formats, stores, and outputs log entries.
    * @param {string} level - INFO | DEBUG | WARN | ERROR
@@ -40,6 +43,30 @@ const AppLogger = {
         });
       } catch (_) { /* Braze may not be ready */ }
     }
+
+    this._notifyLogSubscribers();
+  },
+
+  /**
+   * Subscribe to log writes (after each entry is stored). Used for live debug UI.
+   * @param {function(): void} listener - Called with no arguments after each successful log.
+   * @returns {function(): void} Unsubscribe function.
+   */
+  subscribe(listener) {
+    if (typeof listener !== 'function') return () => {};
+    this._logSubscribers.add(listener);
+    return () => this._logSubscribers.delete(listener);
+  },
+
+  /**
+   * @private
+   */
+  _notifyLogSubscribers() {
+    this._logSubscribers.forEach((fn) => {
+      try {
+        fn();
+      } catch (_) { /* listener must not break logging */ }
+    });
   },
 
   /**

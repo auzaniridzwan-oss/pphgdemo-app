@@ -13,9 +13,11 @@ const DebugOverlay = {
   _container: null,
   /** @type {boolean} */
   _visible: false,
+  /** @type {number|null} @private */
+  _rafId: null,
 
   /**
-   * Initialize the overlay and bind the toggle button.
+   * Initialize the overlay, bind the toggle button, and subscribe for live updates while open.
    */
   init() {
     this._container = document.getElementById('debug-overlay');
@@ -23,6 +25,24 @@ const DebugOverlay = {
     if (toggleBtn) {
       toggleBtn.addEventListener('click', () => this.toggle());
     }
+    const refresh = () => this._scheduleRefreshIfVisible();
+    AppLogger.subscribe(refresh);
+    StorageManager.subscribe(refresh);
+  },
+
+  /**
+   * Batch overlay re-renders to the next animation frame when the panel is visible.
+   * @private
+   */
+  _scheduleRefreshIfVisible() {
+    if (!this._visible || !this._container) return;
+    if (this._rafId != null) {
+      cancelAnimationFrame(this._rafId);
+    }
+    this._rafId = requestAnimationFrame(() => {
+      this._rafId = null;
+      this.render();
+    });
   },
 
   /**
@@ -41,6 +61,8 @@ const DebugOverlay = {
    */
   render() {
     if (!this._container) return;
+
+    const scrollTop = this._container.scrollTop;
 
     const user = BrazeManager.getUserProfile();
     const deviceId = BrazeManager.getDeviceId();
@@ -103,6 +125,8 @@ const DebugOverlay = {
     if (closeBtn) {
       closeBtn.addEventListener('click', () => this.toggle());
     }
+
+    this._container.scrollTop = scrollTop;
   },
 
   /**
