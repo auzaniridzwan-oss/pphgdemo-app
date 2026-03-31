@@ -4,7 +4,7 @@
 
 ## Overview
 
-This app simulates **browsing Singapore hotels and completing a guest booking** inside a 390×844px iPhone frame, built to demonstrate **Braze WebSDK** integrations (In-App Messages, Content Cards, custom events, and user attributes). Content is **100% demo data** (properties, March–April 2026 seasonal offers, and sample rates) — not live inventory or payment processing.
+This app simulates **browsing Singapore hotels and completing a guest booking** inside a 390×844px iPhone frame, built to demonstrate **Braze WebSDK** integrations (In-App Messages, Content Cards, custom events, and user attributes). Content is **100% demo data** (sample rates and flows only — not live inventory or payment processing). **Hotel, room, and offer imagery** are sourced from the official [Pan Pacific Hotels Group](https://www.panpacific.com/) DAM (`panpacific.com/content/dam/...`). **Offers** in [`js/demo-data.js`](js/demo-data.js) mirror hub-style categories (**Spa** first, then **Rooms and Suites**) with copy and dates aligned to public offer pages where applicable.
 
 **Demo vs live identity:** Use the toolbar to switch **Demo** / **Live** mode. In Demo, **Log in** applies the built-in test user. In Live, **Log in** opens a dialog to enter a Braze **external_id**; the app calls a small **Vercel serverless** endpoint that uses the **Braze REST API** to fetch a safe subset of profile fields (so the REST key stays on the server, not in the browser).
 
@@ -41,7 +41,7 @@ Design tokens and UX patterns follow [`.cursor/design/design.json`](.cursor/desi
 - **`AuthService`** ([`js/auth-service.js`](js/auth-service.js)) — Demo vs Live mode, login/logout, loyalty fields for Loyalty/Account screens; logout may call `braze.wipeData` when switching modes.
 - **`Router`** ([`js/router.js`](js/router.js)) — Hash routes for tabs plus dynamic hotel paths: `/hotel/:id`, `/hotel/:id/rooms`, `/hotel/:id/checkout`.
 - **Screens** ([`js/screens/`](js/screens/)) — Each screen renders into `#app-content`. The previous marketplace screens are preserved under [`js/screens/_backup_easymoney/`](js/screens/_backup_easymoney/) with their own [`demo-data.easymoney.js`](js/screens/_backup_easymoney/demo-data.easymoney.js) snapshot (not loaded by the current app).
-- **Demo data** ([`js/demo-data.js`](js/demo-data.js)) — Singapore hotels, room types, Q1 2026 offers, `TEST_USER`, and `DEMO_LOYALTY` for Demo mode.
+- **Demo data** ([`js/demo-data.js`](js/demo-data.js)) — Singapore hotels, room types, curated **Singapore offers** (Spa + Rooms/Suites from the brand offers hub), brand CDN images for properties and rooms, plus `TEST_USER` and `DEMO_LOYALTY` for Demo mode.
 
 ## iPhone frame
 

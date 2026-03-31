@@ -1,5 +1,5 @@
 /**
- * Seasonal offers — March / Q1 2026 Singapore-relevant promos.
+ * Singapore offers from Pan Pacific Hotels Group (Spa + Rooms and Suites).
  * @module Offers
  */
 import Header from '../components/header.js';
@@ -21,7 +21,7 @@ export default function renderOffers(container) {
   intro.style.cssText =
     'font-size:13px;color:var(--pphg-text-secondary);line-height:1.5;margin-bottom:18px;';
   intro.textContent =
-    'Limited-time packages for March school holidays, Easter weekend, and Grand Prix season previews — demo rates only.';
+    'Curated Singapore packages from the official offers hub — Spa experiences first, then rooms and suites. Details and eligibility on panpacific.com.';
   wrap.appendChild(intro);
 
   OFFERS.forEach((offer) => {

@@ -41,11 +41,11 @@ export const HOTELS = [
     description:
       'Connected to Marina Square and steps from the convention district. Outdoor pool, Pacific Club lounge, and direct MRT access via City Hall.',
     thumbnail:
-      'https://images.unsplash.com/photo-1566073771259-6a8506099945?w=400&h=400&fit=crop',
+      'https://www.panpacific.com/content/dam/pphg-revamp/en/global/hotels-and-resorts/ppsin-property.jpg',
     images: [
-      'https://images.unsplash.com/photo-1566073771259-6a8506099945?w=800&h=600&fit=crop',
-      'https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?w=800&h=600&fit=crop',
-      'https://images.unsplash.com/photo-1618773928121-c32242e63f39?w=800&h=600&fit=crop',
+      'https://www.panpacific.com/content/dam/pphg-revamp/en/ppsin/pphg2-0/homepage/ppsin-homepage-property-highlight-1.jpg',
+      'https://www.panpacific.com/content/dam/pphg-revamp/en/ppsin/pphg2-0/homepage/ppsin-homepage-property-highlight-2.jpg',
+      'https://www.panpacific.com/content/dam/pphg-revamp/en/ppsin/pphg2-0/homepage/ppsin-homepage-property-introduction-2.jpg',
     ],
     fromPrice: 420,
     phone: '+65 6336 8111',
@@ -58,11 +58,11 @@ export const HOTELS = [
     description:
       'Biophilic design with 13m green terraces, indoor garden, and floor-to-ceiling city views. Ideal for design-forward stays during the March school holidays.',
     thumbnail:
-      'https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?w=400&h=400&fit=crop',
+      'https://www.panpacific.com/content/dam/pphg-revamp/en/global/hotels-and-resorts/prsmb-property4.jpg',
     images: [
-      'https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?w=800&h=600&fit=crop',
-      'https://images.unsplash.com/photo-1611892440504-42a792e54c32?w=800&h=600&fit=crop',
-      'https://images.unsplash.com/photo-1596436889106-35b1c3c2e5a5?w=800&h=600&fit=crop',
+      'https://www.panpacific.com/content/dam/pphg-revamp/en/prsmb/prc2-0/homepage/PRSMB_Property_Highlights_Main_Image.jpg',
+      'https://www.panpacific.com/content/dam/pphg-revamp/en/prsmb/prc2-0/homepage/PRSMB_Property_Highlights_Image_1.jpg',
+      'https://www.panpacific.com/content/dam/pphg-revamp/en/prsmb/prc2-0/homepage/PRSMB_Property_Highlights_Image_2.jpg',
     ],
     fromPrice: 398,
     phone: '+65 6845 1000',
@@ -75,10 +75,11 @@ export const HOTELS = [
     description:
       'Rooftop pool with skyline views, short walk to Haji Lane and Arab Street. Strong choice for long weekends before the Formula 1 season kicks off.',
     thumbnail:
-      'https://images.unsplash.com/photo-1571896349842-33c89424de2d?w=400&h=400&fit=crop',
+      'https://www.panpacific.com/content/dam/pphg-revamp/en/global/hotels-and-resorts/prsin-property-april2021.jpg',
     images: [
-      'https://images.unsplash.com/photo-1571896349842-33c89424de2d?w=800&h=600&fit=crop',
-      'https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?w=800&h=600&fit=crop',
+      'https://www.panpacific.com/content/dam/pphg-revamp/en/prsin/pr-2-0/homepage/PRSIN_Masthead_Image.jpg',
+      'https://www.panpacific.com/content/dam/pphg-revamp/en/prsin/pr-2-0/homepage/PRSIN_Property_Highlights_Image_1.jpg',
+      'https://www.panpacific.com/content/dam/pphg-revamp/en/prsin/pr-2-0/homepage/PRSIN_Property_Highlights_Image_2.jpg',
     ],
     fromPrice: 285,
     phone: '+65 6505 5666',
@@ -91,10 +92,11 @@ export const HOTELS = [
     description:
       'Residential-style suites with kitchenette — perfect for 5-night March school-holiday family blocks or pre–Good Friday extended stays.',
     thumbnail:
-      'https://images.unsplash.com/photo-1631049307264-e0dd4e8a2c38?w=400&h=400&fit=crop',
+      'https://www.panpacific.com/content/dam/pphg-revamp/en/global/serviced-suites/ppssin-property.jpg',
     images: [
-      'https://images.unsplash.com/photo-1631049307264-e0dd4e8a2c38?w=800&h=600&fit=crop',
-      'https://images.unsplash.com/photo-1584132967334-10e3decfabf2?w=800&h=600&fit=crop',
+      'https://www.panpacific.com/content/dam/pphg-revamp/en/ppssin/pphg2-0/homepage/PPSSIN_Masthead_Image.jpg',
+      'https://www.panpacific.com/content/dam/pphg-revamp/en/ppssin/pphg2-0/homepage/PPSSIN_Property_Highlights_Image_1.jpg',
+      'https://www.panpacific.com/content/dam/pphg-revamp/en/ppssin/pphg2-0/homepage/PPSSIN_Property_Highlights_Image_2.jpg',
     ],
     fromPrice: 310,
     phone: '+65 6737 8333',
@@ -113,7 +115,7 @@ export const ROOMS_BY_HOTEL = {
       title: 'Deluxe Room — Marina View',
       meta: '32 m² · King · Bathtub',
       image:
-        'https://images.unsplash.com/photo-1590490360182-c33d57733427?w=800&h=450&fit=crop',
+        'https://www.panpacific.com/content/dam/pphg-revamp/en/ppsin/rooms/panoramic-room/ppsin-rooms-panoramic-king-bedroom-2022-hero.jpg',
       pricePerNight: 420,
     },
     {
@@ -121,7 +123,7 @@ export const ROOMS_BY_HOTEL = {
       title: 'Pacific Club Room',
       meta: '36 m² · Lounge access · Evening cocktails',
       image:
-        'https://images.unsplash.com/photo-1618773928121-c32242e63f39?w=800&h=450&fit=crop',
+        'https://www.panpacific.com/content/dam/pphg-revamp/en/ppsin/rooms/premier-marina-bay/ppsin-rooms-executive-marina-bay-king-2-hero.jpg',
       pricePerNight: 510,
     },
   ],
@@ -131,7 +133,7 @@ export const ROOMS_BY_HOTEL = {
       title: 'Collection Room — Garden View',
       meta: '30 m² · Rain shower · Smart room controls',
       image:
-        'https://images.unsplash.com/photo-1611892440504-42a792e54c32?w=800&h=450&fit=crop',
+        'https://www.panpacific.com/content/dam/pphg-revamp/en/prsmb/prc2-0/rooms/signature-marina-bay-room/PRSMB_SignatureMarinaBayRoom_Room_Feature_Image.jpg',
       pricePerNight: 398,
     },
     {
@@ -139,7 +141,7 @@ export const ROOMS_BY_HOTEL = {
       title: 'Bay View Suite',
       meta: '52 m² · Separate living · Soaking tub',
       image:
-        'https://images.unsplash.com/photo-1596436889106-35b1c3c2e5a5?w=800&h=450&fit=crop',
+        'https://www.panpacific.com/content/dam/pphg-revamp/en/prsmb/prc2-0/rooms/signature-marina-bay-suite/PRSMB_SignatureMarinaBaySuite_Room_Feature_Image.jpg',
       pricePerNight: 620,
     },
   ],
@@ -149,7 +151,7 @@ export const ROOMS_BY_HOTEL = {
       title: 'Deluxe King',
       meta: '28 m² · City view',
       image:
-        'https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?w=800&h=450&fit=crop',
+        'https://www.panpacific.com/content/dam/pphg-revamp/en/prsin/pr-2-0/sleep/deluxe-room/PRSIN_Deluxe_Room_Feature_Image.jpg',
       pricePerNight: 285,
     },
     {
@@ -157,7 +159,7 @@ export const ROOMS_BY_HOTEL = {
       title: 'Orchid Club Deluxe',
       meta: '30 m² · Club lounge · Late checkout',
       image:
-        'https://images.unsplash.com/photo-1571896349842-33c89424de2d?w=800&h=450&fit=crop',
+        'https://www.panpacific.com/content/dam/pphg-revamp/en/prsin/pr-2-0/sleep/parkroyal-club-deluxe-room/PRSIN_ClubDeluxe_Room_Feature_Image.jpg',
       pricePerNight: 345,
     },
   ],
@@ -167,7 +169,7 @@ export const ROOMS_BY_HOTEL = {
       title: 'One-Bedroom Suite',
       meta: '45 m² · Kitchenette · Washer-dryer',
       image:
-        'https://images.unsplash.com/photo-1584132967334-10e3decfabf2?w=800&h=450&fit=crop',
+        'https://www.panpacific.com/content/dam/pphg-revamp/en/ppssin/pphg2-0/rooms/one-bedroom-deluxe-suite/PPSSIN_OneBedroomDeluxe_Listing_Image.jpg',
       pricePerNight: 310,
     },
     {
@@ -175,52 +177,57 @@ export const ROOMS_BY_HOTEL = {
       title: 'Two-Bedroom Family Suite',
       meta: '68 m² · Dual bathrooms · Dining for 4',
       image:
-        'https://images.unsplash.com/photo-1631049307264-e0dd4e8a2c38?w=800&h=450&fit=crop',
+        'https://www.panpacific.com/content/dam/pphg-revamp/en/ppssin/pphg2-0/rooms/two-bedroom-executive-suite/PPSSIN_TwoBedroomExecutive_Listing_Image.jpg',
       pricePerNight: 485,
     },
   ],
 };
 
 /**
- * Seasonal offers relevant to March 2026 (school holidays, Easter lead-in, F1 preview).
+ * Singapore offers aligned with panpacific.com hub categories: Spa first, then Rooms and Suites.
+ * Copy and dates mirror official offer detail pages (participating properties include Singapore).
  * @type {Array<Object>}
  */
 export const OFFERS = [
   {
-    id: 'offer_mar_school_2026',
-    badge: 'March School Holidays',
-    title: 'Family Staycation — Kids Eat Free',
-    location: 'Participating Singapore hotels',
-    validThrough: 'Book by 23 Mar 2026 · Stay 15–30 Mar 2026',
+    id: 'offer_9d_breathwork_ppsor',
+    badge: 'Spa',
+    title: '9D Breathwork Activation',
+    location: 'Singapore — Pan Pacific Orchard',
+    validThrough:
+      'Book 30 Mar–23 Apr 2026 · Session 25 Apr 2026, 3pm–5pm (advance registration)',
     image:
-      'https://images.unsplash.com/photo-1512343879784-a960bf40e7f2?w=800&h=450&fit=crop',
+      'https://www.panpacific.com/content/dam/pphg-revamp/ja/ppsor/offers/detail/PPSOR_9DBreathworkActivation_Masthead_Image.jpg',
   },
   {
-    id: 'offer_easter_early_2026',
-    badge: 'Easter 2026',
-    title: 'Good Friday Long Weekend — 3rd Night 40% Off',
-    location: 'Pan Pacific Singapore · PARKROYAL Marina Bay',
-    validThrough: 'Book by 31 Mar 2026 for stays 3–6 Apr 2026',
+    id: 'offer_ruby_spa_ppsin',
+    badge: 'Spa',
+    title: 'Ruby Spa Package',
+    location: 'Singapore — Pan Pacific Singapore (St. Gregory Spa)',
+    validThrough: 'Spa credits valid 12 months from purchase · See offer T&C',
     image:
-      'https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?w=800&h=450&fit=crop',
+      'https://www.panpacific.com/content/dam/pphg-revamp/en/ppsin/offers/listing/ppsin-offers-st-gregory-spa-ruby-package-hero.jpg',
   },
   {
-    id: 'offer_f1_preview_2026',
-    badge: 'Grand Prix Season',
-    title: 'Race Weekend Preview Rate — Pacific Club Upgrade',
-    location: 'Marina Bay properties',
-    validThrough: 'Limited rooms · Offer ends 31 Mar 2026',
+    id: 'offer_third_night_sg',
+    badge: 'Rooms and Suites',
+    title: 'Third Night on Us',
+    location:
+      'Singapore — Pan Pacific Singapore, Orchard, Marina Bay, Pickering, Beach Road & serviced suites',
+    validThrough:
+      'Book 3 Mar–28 Apr 2026 · Stay 3 Mar–30 Apr 2026 (Club rooms & suites)',
     image:
-      'https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?w=800&h=450&fit=crop',
+      'https://www.panpacific.com/content/dam/pphg-revamp/en/global/offers/third-night-on-us/Global_Offer_Club_Suites_Masthead.jpg',
   },
   {
-    id: 'offer_discovery_q1',
-    badge: 'DISCOVERY',
-    title: 'Double Points on Dining — Q1 2026',
-    location: 'Singapore & regional dining outlets',
-    validThrough: '1 Jan – 31 Mar 2026',
+    id: 'offer_gnomes_prsmb',
+    badge: 'Rooms and Suites',
+    title: "Welcome to Gnome's Land",
+    location: 'Singapore — PARKROYAL COLLECTION Marina Bay',
+    validThrough:
+      'Book 2 Jan–31 Dec 2026 · Stay through 31 Dec 2026 (Gnome\'s Burrow & Treehouse)',
     image:
-      'https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=800&h=450&fit=crop',
+      'https://www.panpacific.com/content/dam/pphg-revamp/en/prsmb/offers/listing/welcome-to-the-gnomes-land/prsmb-rooms-gnomes-treehouse-2160x750-resized.jpg',
   },
 ];
 
