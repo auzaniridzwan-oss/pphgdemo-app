@@ -139,6 +139,18 @@ function initAuthToolbar() {
 }
 
 /**
+ * In demo mode, establish the test user before first route so `changeUser` runs before screen-level custom events.
+ */
+function ensureDemoBrazeSession() {
+  if (AuthService.getAuthMode() !== 'demo' || AuthService.isLoggedIn()) return;
+  AuthService.loginDemo();
+  BrazeManager.identifyLoggedInUser();
+  BottomNav.refreshAuthState();
+  syncToolbarAuthUI();
+  AppLogger.info('AUTH', 'Auto demo session for Braze attribution');
+}
+
+/**
  * Boot the application — called once on DOMContentLoaded.
  * Async to allow awaiting the lazy-loaded Braze SDK before the session opens.
  */
@@ -183,6 +195,8 @@ async function boot() {
   DebugOverlay.init();
 
   initAuthToolbar();
+
+  ensureDemoBrazeSession();
 
   const resetBtn = document.getElementById('btn-reset');
   if (resetBtn) {

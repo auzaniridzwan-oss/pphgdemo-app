@@ -207,7 +207,14 @@ const BrazeManager = {
   logEvent(eventName, properties = {}) {
     AppLogger.info('SDK', `Event: ${eventName}`, properties);
 
-    if (!window.braze) return;
+    if (!window.braze || !this._initialized) {
+      AppLogger.warn(
+        'SDK',
+        `Custom event not sent (Braze unavailable or not initialized): ${eventName}`,
+        properties
+      );
+      return;
+    }
 
     try {
       window.braze.logCustomEvent(eventName, {
@@ -215,6 +222,9 @@ const BrazeManager = {
         app_version: AppConfig.app.version,
         platform: AppConfig.app.platform,
       });
+      if (AppLogger.DEBUG_MODE && typeof window.braze.requestImmediateDataFlush === 'function') {
+        window.braze.requestImmediateDataFlush();
+      }
     } catch (e) {
       AppLogger.error('SDK', `Failed to log event: ${eventName}`, e.message);
     }
