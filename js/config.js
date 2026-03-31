@@ -5,7 +5,7 @@
  */
 const AppConfig = {
   braze: {
-    apiKey: '5289a0ce-f873-450c-a1df-1a412ea78a44',
+    apiKey: '547f5292-81e2-44c0-85cf-d0cf58378e05',
     baseUrl: 'sdk.iad-03.braze.com',
     sdkUrl: 'https://js.appboycdn.com/web-sdk/6.5/braze.min.js',
   },
